@@ -1,4 +1,4 @@
-
+package com.github.thalles.backend.exception;
 
 public class NegocioExcecao extends RuntimeException {
     
