@@ -1,11 +1,12 @@
 package com.github.thalles.backend.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.context.Context;
 
 import com.github.thalles.backend.exception.NaoEncontradoExcecao;
 import com.github.thalles.backend.model.Pessoa;
@@ -20,8 +21,20 @@ public class PessoaService {
     @Autowired
     private MessageSource messageSource;
 
+    @Autowired
+    private EmailServices emailService;
+
     public Pessoa inserir(Pessoa pessoa) {
-        return pessoaRepository.save(pessoa);
+        Pessoa pessoaCadastrada = pessoaRepository.save(pessoa);
+        emailService.enviarEmailSimples(pessoaCadastrada.getEmail(), "Cadastrado com sucesso!", "Cadastrado no Sistema de Leilão foi feito com sucesso!");
+        //enviarEmailSucesso(pessoaCadastrada);
+        return pessoaCadastrada;
+    }
+
+    private void enviarEmailSucesso(Pessoa pessoa) {
+        Context context = new Context();
+        context.setVariable("nome", pessoa.getNome());
+        emailService.emailTemplate(pessoa.getEmail(), "Cadastro feito com Sucesso", context, "cadastroSucesso");
     }
 
     public Pessoa alterar(Pessoa pessoa) {
@@ -36,8 +49,8 @@ public class PessoaService {
         pessoaRepository.delete(pessoaBanco);
     }
 
-    public List<Pessoa> buscarTodos() {
-        return pessoaRepository.findAll();
+    public Page<Pessoa> buscarTodos(Pageable pageable) {
+        return pessoaRepository.findAll(pageable);
     }
 
     public Pessoa buscarPorId(Long id) {
