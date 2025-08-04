@@ -5,18 +5,21 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 
 import com.github.thalles.backend.exception.NaoEncontradoExcecao;
 import com.github.thalles.backend.model.Pessoa;
-import com.github.thalles.backend.repository.PessoasRepository;
+import com.github.thalles.backend.repository.PessoaRepository;
 
 @Service
-public class PessoaService {
+public class PessoaService implements UserDetailsService {
     
     @Autowired
-    private PessoasRepository pessoaRepository;
+    private PessoaRepository pessoaRepository;
 
     @Autowired
     private MessageSource messageSource;
@@ -59,5 +62,12 @@ public class PessoaService {
         .getMessage("pessoa.notfound",
         new Object[] {id},
         LocaleContextHolder.getLocale() )));
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws
+    UsernameNotFoundException {
+        return pessoaRepository.findByEmail(username)
+            .orElseThrow(() -> new UsernameNotFoundException("Pessoa não encontrada"));
     }
 }
