@@ -7,18 +7,20 @@ import AutenticacaoService from "../../services/AutenticacaoService";
 import "./Login.css";
 
 function Login() {
+  const autenticacaoService = new AutenticacaoService();
   const [usuario, setUsuario] = useState({ email: "", senha: "" });
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setUsuario({ ...usuario, [e.target.name]: e.target.value });
   };
-  const navigate = useNavigate();
-
+  
   const login = async () => {
     try {
       const resposta = await autenticacaoService.login(usuario);
-      console.log(resposta);
+      console.log(resposta.data);
       if (resposta.status == 200 && resposta.data.token) {
-        localStorage.setItem("usuario", resposta.data);
+        localStorage.setItem("usuario", JSON.stringify(resposta.data));
         navigate("/");
       } else {
         alert("Erro ao fazer login");
@@ -31,9 +33,9 @@ function Login() {
 
   return (
     <div className="container">
-      <label htmlFor="email">E-mail</label>
+      <label>E-mail</label>
       <InputText value={usuario.email} name="email" onChange={handleChange} />
-      <label htmlFor="password">Senha</label>
+      <label>Senha</label>
       <Password value={usuario.senha} name="senha" onChange={handleChange} />
       <br />
       <Button label="Entrar" onClick={login} />
