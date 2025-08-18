@@ -12,12 +12,25 @@ const AppRoutes = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<RotaPrivadaLayout />}>
-          <Route path="/" element={<PadraoLayout>
-            <Home/>
-          </PadraoLayout>}></Route>
+          <Route
+            path="/"
+            element={
+              <PadraoLayout>
+                <Home />
+              </PadraoLayout>
+            }
+          />
+          <Route
+            path="/perfil"
+            element={
+              <PadraoLayout>
+                <Perfil />
+              </PadraoLayout>
+            }
+          />
         </Route>
 
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={() => <Login />} />
         <Route path="/cadastro" element={<NewRegistration />} />
         <Route path="/recuperar-senha" element={<RecoverPassword />} />
         <Route path="/alterar-senha" element={<ChangePassword />} />
