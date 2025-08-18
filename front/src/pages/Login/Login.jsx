@@ -7,6 +7,12 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  //
+  const [usuario, setUsuario] = useState({email:'',senha:''});
+  const handleChange = (e) => {
+    setUsuario({...usuario, [e.target.name]:e.target.value});
+  }
+
   const handleLogin = (e) => {
     e.preventDefault();
     navigate("/");
