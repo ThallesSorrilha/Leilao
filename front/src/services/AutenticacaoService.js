@@ -1,3 +1,4 @@
+import BaseService from "./BaseServices";
 
 class AutenticacaoService extends BaseService {
     

@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "../pages/Login/Login.jsx";
+import Login from "../pages/Login/LoginFrank.jsx";
 import NewRegistration from "../pages/NewRegistration/NewRegistration";
 import RecoverPassword from "../pages/RecoverPassword/RecoverPassword";
 import ChangePassword from "../pages/ChangePassword/ChangePassword";
 import InsertCode from "../pages/InsertCode/InsertCode.jsx";
+import Perfil from "../pages/Perfil/Perfil.jsx";
 import RotaPrivadaLayout from "../components/layout/RotaPrivadaLayout.jsx";
 import PadraoLayout from "../components/layout/PadraoLayout.jsx";
 
@@ -14,11 +15,7 @@ const AppRoutes = () => {
         <Route element={<RotaPrivadaLayout />}>
           <Route
             path="/"
-            element={
-              <PadraoLayout>
-                <Home />
-              </PadraoLayout>
-            }
+            element={<PadraoLayout>{/*<Home />*/}</PadraoLayout>}
           />
           <Route
             path="/perfil"
@@ -30,7 +27,7 @@ const AppRoutes = () => {
           />
         </Route>
 
-        <Route path="/login" element={() => <Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<NewRegistration />} />
         <Route path="/recuperar-senha" element={<RecoverPassword />} />
         <Route path="/alterar-senha" element={<ChangePassword />} />

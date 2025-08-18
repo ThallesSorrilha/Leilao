@@ -4,7 +4,7 @@ import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
 import { Button } from "primereact/button";
 import AutenticacaoService from "../../services/AutenticacaoService";
-import "./Login.css";
+import "./LoginFrank.css";
 
 function Login() {
   const autenticacaoService = new AutenticacaoService();
@@ -14,12 +14,12 @@ function Login() {
   const handleChange = (e) => {
     setUsuario({ ...usuario, [e.target.name]: e.target.value });
   };
-  
+
   const login = async () => {
     try {
       const resposta = await autenticacaoService.login(usuario);
       console.log(resposta.data);
-      if (resposta.status == 200 && resposta.data.token) {
+      if (resposta.status === 200 && resposta.data.token) {
         localStorage.setItem("usuario", JSON.stringify(resposta.data));
         navigate("/");
       } else {

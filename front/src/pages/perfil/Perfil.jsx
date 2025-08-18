@@ -20,7 +20,7 @@ const Perfil = () => {
 
   useEffect(() => {
     carregarPerfis();
-  }, []);
+  });
 
   const carregarPerfis = async () => {
     setLoading(true);
