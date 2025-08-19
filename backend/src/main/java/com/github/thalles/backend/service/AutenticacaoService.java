@@ -1,15 +1,18 @@
-package com.github.thalles.backend.security;
+package com.github.thalles.backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Service;
 
 import com.github.thalles.backend.dto.PessoaAutenticacaoDTO;
 import com.github.thalles.backend.dto.PessoaRequisicaoDTO;
 import com.github.thalles.backend.model.Pessoa;
 import com.github.thalles.backend.repository.PessoaRepository;
+import com.github.thalles.backend.security.JwtService;
 
+@Service
 public class AutenticacaoService {
 
     @Autowired

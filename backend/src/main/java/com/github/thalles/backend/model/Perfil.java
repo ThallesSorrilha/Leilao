@@ -16,8 +16,6 @@ public class Perfil {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message="{validation.name.notblank}")
+    @NotBlank(message = "{validation.name.notblank}")
     private String nome;
 }
-
-// modelo, repository, service, controller

@@ -23,7 +23,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableMethodSecurity(prePostEnabled = true)
 public class ConfiguracaoSeguranca {
 
-  
     private final JwtFiltroAutenticacao jwtRequestFilter;
 
     public ConfiguracaoSeguranca(JwtFiltroAutenticacao jwtRequestFilter) {
@@ -43,32 +42,32 @@ public class ConfiguracaoSeguranca {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
-             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-            .authorizeHttpRequests(authorize -> authorize
-            .requestMatchers("/autenticacao/**").permitAll()
-            .requestMatchers("/categoria/**").permitAll()
-            .requestMatchers("/leilao/public").permitAll()
-            /* .requestMatchers("/api/pessoa/**").hasRole("ADMIN") */
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .authorizeHttpRequests(authorize -> authorize
+                .requestMatchers("/autenticacao/**").permitAll()
+                .requestMatchers("/perfil/**").permitAll()
+                .requestMatchers("/pessoa/**").permitAll()
+                /* .requestMatchers("/api/pessoa/**").hasRole("ADMIN") */
                 .anyRequest().authenticated()
-            )
-            .sessionManagement(session -> session
+                )
+                .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            )
-            .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+                )
+                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
 
-        @Bean
+    @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of("http://localhost:3000"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type")); 
-        configuration.setAllowCredentials(true); 
+        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+        configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration); 
+        source.registerCorsConfiguration("/**", configuration);
 
         return source;
     }

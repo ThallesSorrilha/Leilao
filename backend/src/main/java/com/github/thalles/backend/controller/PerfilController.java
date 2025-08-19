@@ -30,6 +30,12 @@ public class PerfilController {
         return ResponseEntity.ok(perfilService.buscarTodos(pageable));
     }
 
+    // Método adicional
+    @GetMapping("/{id}")
+    public ResponseEntity<Perfil> buscarPorId(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(perfilService.buscarPorId(id));
+    }
+
     @PostMapping
     public ResponseEntity<Perfil> inserir(@Valid @RequestBody Perfil perfil) {
         return ResponseEntity.ok(perfilService.inserir(perfil));
@@ -43,6 +49,6 @@ public class PerfilController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> excluir(@PathVariable("id") Long id) {
         perfilService.excluir(id);
-        return ResponseEntity.ok("Excluindo");
+        return ResponseEntity.ok("Excluído");
     }
 }

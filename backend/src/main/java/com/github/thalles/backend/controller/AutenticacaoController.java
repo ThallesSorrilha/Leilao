@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.thalles.backend.dto.PessoaAutenticacaoDTO;
 import com.github.thalles.backend.dto.PessoaRequisicaoDTO;
-import com.github.thalles.backend.security.AutenticacaoService;
+import com.github.thalles.backend.service.AutenticacaoService;
 
 @RestController
 @RequestMapping("/autenticacao")

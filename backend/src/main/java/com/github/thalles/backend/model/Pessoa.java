@@ -11,9 +11,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
-
-//import org.hibernate.validator.constraints.br.CPF;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -28,20 +25,20 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "pessoa")
-public class Pessoa implements UserDetails{
+public class Pessoa implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message="{validation.name.notblank}")
+    @NotBlank(message = "{validation.name.notblank}")
     private String nome;
-    @NotBlank(message="{validation.email.notblank}")
-    @Email(message="{validation.email.notvalid}")
+    @NotBlank(message = "{validation.email.notblank}")
+    @Email(message = "{validation.email.notvalid}")
     private String email;
     @JsonIgnore
     private String senha;
 
-    @OneToMany(mappedBy="pessoa", cascade=CascadeType.ALL, orphanRemoval=true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<PessoaPerfil> pessoaPerfil;
 
     public void setPessoaPerfil(List<PessoaPerfil> pessoaPerfil) {
@@ -52,10 +49,10 @@ public class Pessoa implements UserDetails{
     }
 
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return pessoaPerfil.stream().map(user -> new
-        SimpleGrantedAuthority(user.getPerfil().getNome()))
-        .collect(Collectors.toList());
+        return pessoaPerfil.stream().map(user -> new SimpleGrantedAuthority(user.getPerfil().getNome()))
+                .collect(Collectors.toList());
     }
 
     @Override

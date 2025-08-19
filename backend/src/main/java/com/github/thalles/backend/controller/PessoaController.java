@@ -30,6 +30,7 @@ public class PessoaController {
         return ResponseEntity.ok(pessoaService.buscarTodos(pageable));
     }
 
+    // Método adicional
     @GetMapping("/{id}")
     public ResponseEntity<Pessoa> buscarPorId(@PathVariable("id") Long id) {
         return ResponseEntity.ok(pessoaService.buscarPorId(id));
