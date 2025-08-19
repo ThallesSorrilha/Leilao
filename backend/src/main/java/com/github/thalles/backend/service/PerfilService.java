@@ -13,16 +13,19 @@ import com.github.thalles.backend.repository.PerfilRepository;
 
 @Service
 public class PerfilService {
-    
+
     @Autowired
     private PerfilRepository perfilRepository;
 
     @Autowired
     private MessageSource messageSource;
 
+    @Autowired
+    private EmailServices emailService;
+
     public Perfil inserir(Perfil perfil) {
-        Perfil perfilCadastrada = perfilRepository.save(perfil);
-        return perfilCadastrada;
+        Perfil perfilCadastrado = perfilRepository.save(perfil);
+        return perfilCadastrado;
     }
 
     public Perfil alterar(Perfil perfil) {
@@ -42,9 +45,9 @@ public class PerfilService {
 
     public Perfil buscarPorId(Long id) {
         return perfilRepository.findById(id)
-        .orElseThrow(() -> new NaoEncontradoExcecao(messageSource
-        .getMessage("perfil.notfound",
-        new Object[] {id},
-        LocaleContextHolder.getLocale() )));
+                .orElseThrow(() -> new NaoEncontradoExcecao(messageSource
+                .getMessage("perfil.notfound",
+                        new Object[]{id},
+                        LocaleContextHolder.getLocale())));
     }
 }

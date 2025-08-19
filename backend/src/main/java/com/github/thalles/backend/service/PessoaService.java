@@ -29,8 +29,7 @@ public class PessoaService implements UserDetailsService {
 
     public Pessoa inserir(Pessoa pessoa) {
         Pessoa pessoaCadastrada = pessoaRepository.save(pessoa);
-        emailService.enviarEmailSimples(pessoaCadastrada.getEmail(), "Cadastrado com sucesso!", "Cadastrado no Sistema de Leilão foi feito com sucesso!");
-        //enviarEmailSucesso(pessoaCadastrada);
+        enviarEmailSucesso(pessoaCadastrada);
         return pessoaCadastrada;
     }
 
