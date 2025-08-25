@@ -1,5 +1,7 @@
 package com.github.thalles.backend.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,13 +12,16 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "perfil")
-public class Perfil {
+@Table(name = "lance")
+public class Lance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "{validation.tipo.notblank}")
-    private TipoPerfil tipo;
+    @NotBlank(message = "{validation.valorLance.notblank}")
+    private Float valorLance;
+
+    @NotBlank(message = "{validation.dataHora.notblank}")
+    private DateTimeFormat dataHora;
 }

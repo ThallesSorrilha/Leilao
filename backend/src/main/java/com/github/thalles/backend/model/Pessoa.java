@@ -43,9 +43,6 @@ public class Pessoa implements UserDetails {
     @JsonIgnore
     private String senha;
 
-    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<PessoaPerfil> pessoaPerfil;
-
     @NotBlank(message = "{validation.codigoValidacao.notblank}")
     private String codigoValidacao;
 
@@ -58,6 +55,9 @@ public class Pessoa implements UserDetails {
     @JsonIgnore
     @NotBlank(message = "{validation.fotoPerfil.notblank}")
     private Lob fotoPerfil;
+
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<PessoaPerfil> pessoaPerfil;
 
     public void setPessoaPerfil(List<PessoaPerfil> pessoaPerfil) {
         for (PessoaPerfil p : pessoaPerfil) {

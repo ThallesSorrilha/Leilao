@@ -10,13 +10,16 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "perfil")
-public class Perfil {
+@Table(name = "categoria")
+public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "{validation.tipo.notblank}")
-    private TipoPerfil tipo;
+    @NotBlank(message = "{validation.nome.notblank}")
+    private String nome;
+
+    @NotBlank(message = "{validation.observacao.notblank}")
+    private String observacao;
 }
