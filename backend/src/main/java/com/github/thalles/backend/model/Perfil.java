@@ -16,6 +16,6 @@ public class Perfil {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message = "{validation.name.notblank}")
-    private String nome;
+    @NotBlank(message = "{validation.tipo.notblank}")
+    private TipoPerfil tipo;
 }
