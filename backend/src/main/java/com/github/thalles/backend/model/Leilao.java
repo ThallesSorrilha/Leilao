@@ -3,6 +3,8 @@ package com.github.thalles.backend.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -41,6 +43,7 @@ public class Leilao {
     @NotBlank(message = "{validation.dataHoraFim.notblank}")
     private DateTimeFormat dataHoraFim;
 
+    @Enumerated(EnumType.STRING)
     @NotBlank(message = "{validation.status.notblank}")
     private StatusLeilao status;
 
