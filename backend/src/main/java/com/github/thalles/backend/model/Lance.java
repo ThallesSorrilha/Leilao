@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import lombok.Data;
 
 @Entity
@@ -22,6 +23,7 @@ public class Lance {
     private Long id;
 
     @NotBlank(message = "{validation.valorLance.notblank}")
+    @Positive(message = "{validation.valorLance.positive}")
     private Float valorLance;
 
     @NotBlank(message = "{validation.dataHora.notblank}")
@@ -33,5 +35,6 @@ public class Lance {
 
     @ManyToOne
     @JoinColumn(name = "id_leilao")
+    @NotBlank(message = "{validation.leilao.notblank}")
     private Leilao leilao;
 }

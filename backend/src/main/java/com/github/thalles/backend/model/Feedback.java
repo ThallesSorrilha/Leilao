@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
@@ -21,10 +22,12 @@ public class Feedback {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Size(max = 1000, message = "{validation.comentario.size}")
     @NotBlank(message = "{validation.comentario.notblank}")
     private String comentario;
 
     @NotBlank(message = "{validation.nota.notblank}")
+    @Size(min = 0, max = 10, message = "{validation.nota.size}")
     private Integer nota;
 
     @NotBlank(message = "{validation.dataHora.notblank}")
@@ -32,5 +35,6 @@ public class Feedback {
 
     @ManyToOne
     @JoinColumn(name = "id_pessoa")
+    @NotBlank(message = "{validation.pessoa.notblank}")
     private Pessoa pessoa;
 }

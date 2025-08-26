@@ -22,6 +22,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
@@ -34,10 +35,12 @@ public class Pessoa implements UserDetails {
     private Long id;
 
     @NotBlank(message = "{validation.name.notblank}")
+    @Size(max = 100, message = "{validation.name.size}")
     private String nome;
 
     @NotBlank(message = "{validation.email.notblank}")
     @Email(message = "{validation.email.notvalid}")
+    @Size(max = 100, message = "{validation.email.size}")
     private String email;
 
     @JsonIgnore

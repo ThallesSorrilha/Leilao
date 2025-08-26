@@ -10,6 +10,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
@@ -22,12 +24,15 @@ public class Leilao {
     private Long id;
 
     @NotBlank(message = "{validation.titulo.notblank}")
+    @Size(max = 100, message = "{validation.titulo.size}")
     private String titulo;
 
     @NotBlank(message = "{validation.descricao.notblank}")
+    @Size(max = 1000, message = "{validation.descricao.size}")
     private String descricao;
 
     @NotBlank(message = "{validation.descricaoDetalhada.notblank}")
+    @Size(max = 5000, message = "{validation.descricaoDetalhada.size}")
     private String descricaoDetalhada;
 
     @NotBlank(message = "{validation.dataHoraInicio.notblank}")
@@ -40,12 +45,15 @@ public class Leilao {
     private StatusLeilao status;
 
     @NotBlank(message = "{validation.observacao.notblank}")
+    @Size(max = 1000, message = "{validation.observacao.size}")
     private String observacao;
 
     @NotBlank(message = "{validation.valorIncremento.notblank}")
+    @Positive(message = "{validation.valorIncremento.positive}")
     private Float valorIncremento;
 
     @NotBlank(message = "{validation.lanceMinimo.notblank}")
+    @Positive(message = "{validation.lanceMinimo.positive}")
     private Float lanceMinimo;
 
     @ManyToOne

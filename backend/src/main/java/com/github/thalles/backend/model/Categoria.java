@@ -8,6 +8,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
@@ -27,9 +28,11 @@ public class Categoria {
 
     @ManyToOne
     @JoinColumn(name = "id_leilao")
+    @Size(max = 100, message = "{validation.leilao.size}")
     private Leilao leilao;
 
     @ManyToOne
     @JoinColumn(name = "id_pessoa")
+    @Size(max = 1000, message = "{validation.leilao.size}")
     private Pessoa pessoa;
 }
