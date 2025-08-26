@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -22,4 +24,12 @@ public class Categoria {
 
     @NotBlank(message = "{validation.observacao.notblank}")
     private String observacao;
+
+    @ManyToOne
+    @JoinColumn(name = "id_leilao")
+    private Leilao leilao;
+
+    @ManyToOne
+    @JoinColumn(name = "id_pessoa")
+    private Pessoa pessoa;
 }
