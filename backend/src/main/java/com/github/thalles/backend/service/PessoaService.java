@@ -43,6 +43,11 @@ public class PessoaService implements UserDetailsService {
         Pessoa pessoaBanco = buscarPorId(pessoa.getId());
         pessoaBanco.setNome(pessoa.getNome());
         pessoaBanco.setEmail(pessoa.getEmail());
+        pessoaBanco.setSenha(pessoa.getSenha());
+        pessoaBanco.setCodigoValidacao(pessoa.getCodigoValidacao());
+        pessoaBanco.setValidateCodigoValidacao(pessoa.getValidateCodigoValidacao());
+        pessoaBanco.setAtivo(pessoa.getAtivo());
+        pessoaBanco.setFotoPerfil(pessoa.getFotoPerfil());
         return pessoaRepository.save(pessoaBanco);
     }
 
