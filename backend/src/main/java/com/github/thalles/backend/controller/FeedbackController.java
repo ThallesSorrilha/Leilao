@@ -13,41 +13,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.thalles.backend.model.Pessoa;
-import com.github.thalles.backend.service.PessoaService;
+import com.github.thalles.backend.model.Feedback;
+import com.github.thalles.backend.service.FeedbackService;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/pessoa")
-public class PessoaController {
+@RequestMapping("/feedback")
+public class FeedbackController {
 
     @Autowired
-    private PessoaService pessoaService;
+    private FeedbackService feedbackService;
 
     @GetMapping
-    public ResponseEntity<Page<Pessoa>> buscarTodos(Pageable pageable) {
-        return ResponseEntity.ok(pessoaService.buscarTodos(pageable));
+    public ResponseEntity<Page<Feedback>> buscarTodos(Pageable pageable) {
+        return ResponseEntity.ok(feedbackService.buscarTodos(pageable));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Pessoa> buscarPorId(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(pessoaService.buscarPorId(id));
+    public ResponseEntity<Feedback> buscarPorId(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(feedbackService.buscarPorId(id));
     }
 
     @PostMapping
-    public ResponseEntity<Pessoa> inserir(@Valid @RequestBody Pessoa pessoa) {
-        return ResponseEntity.ok(pessoaService.inserir(pessoa));
+    public ResponseEntity<Feedback> inserir(@Valid @RequestBody Feedback feedback) {
+        return ResponseEntity.ok(feedbackService.inserir(feedback));
     }
 
     @PutMapping
-    public ResponseEntity<Pessoa> alterar(@Valid @RequestBody Pessoa pessoa) {
-        return ResponseEntity.ok(pessoaService.alterar(pessoa));
+    public ResponseEntity<Feedback> alterar(@Valid @RequestBody Feedback feedback) {
+        return ResponseEntity.ok(feedbackService.alterar(feedback));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> excluir(@PathVariable("id") Long id) {
-        pessoaService.excluir(id);
+        feedbackService.excluir(id);
         return ResponseEntity.ok("Excluindo");
     }
 }

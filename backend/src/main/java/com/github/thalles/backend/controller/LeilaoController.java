@@ -13,41 +13,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.thalles.backend.model.Pessoa;
-import com.github.thalles.backend.service.PessoaService;
+import com.github.thalles.backend.model.Leilao;
+import com.github.thalles.backend.service.LeilaoService;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/pessoa")
-public class PessoaController {
+@RequestMapping("/leilao")
+public class LeilaoController {
 
     @Autowired
-    private PessoaService pessoaService;
+    private LeilaoService leilaoService;
 
     @GetMapping
-    public ResponseEntity<Page<Pessoa>> buscarTodos(Pageable pageable) {
-        return ResponseEntity.ok(pessoaService.buscarTodos(pageable));
+    public ResponseEntity<Page<Leilao>> buscarTodos(Pageable pageable) {
+        return ResponseEntity.ok(leilaoService.buscarTodos(pageable));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Pessoa> buscarPorId(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(pessoaService.buscarPorId(id));
+    public ResponseEntity<Leilao> buscarPorId(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(leilaoService.buscarPorId(id));
     }
 
     @PostMapping
-    public ResponseEntity<Pessoa> inserir(@Valid @RequestBody Pessoa pessoa) {
-        return ResponseEntity.ok(pessoaService.inserir(pessoa));
+    public ResponseEntity<Leilao> inserir(@Valid @RequestBody Leilao leilao) {
+        return ResponseEntity.ok(leilaoService.inserir(leilao));
     }
 
     @PutMapping
-    public ResponseEntity<Pessoa> alterar(@Valid @RequestBody Pessoa pessoa) {
-        return ResponseEntity.ok(pessoaService.alterar(pessoa));
+    public ResponseEntity<Leilao> alterar(@Valid @RequestBody Leilao leilao) {
+        return ResponseEntity.ok(leilaoService.alterar(leilao));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> excluir(@PathVariable("id") Long id) {
-        pessoaService.excluir(id);
+        leilaoService.excluir(id);
         return ResponseEntity.ok("Excluindo");
     }
 }

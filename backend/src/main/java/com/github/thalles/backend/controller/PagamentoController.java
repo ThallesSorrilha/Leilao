@@ -13,41 +13,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.thalles.backend.model.Pessoa;
-import com.github.thalles.backend.service.PessoaService;
+import com.github.thalles.backend.model.Pagamento;
+import com.github.thalles.backend.service.PagamentoService;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/pessoa")
-public class PessoaController {
+@RequestMapping("/pagamento")
+public class PagamentoController {
 
     @Autowired
-    private PessoaService pessoaService;
+    private PagamentoService pagamentoService;
 
     @GetMapping
-    public ResponseEntity<Page<Pessoa>> buscarTodos(Pageable pageable) {
-        return ResponseEntity.ok(pessoaService.buscarTodos(pageable));
+    public ResponseEntity<Page<Pagamento>> buscarTodos(Pageable pageable) {
+        return ResponseEntity.ok(pagamentoService.buscarTodos(pageable));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Pessoa> buscarPorId(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(pessoaService.buscarPorId(id));
+    public ResponseEntity<Pagamento> buscarPorId(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(pagamentoService.buscarPorId(id));
     }
 
     @PostMapping
-    public ResponseEntity<Pessoa> inserir(@Valid @RequestBody Pessoa pessoa) {
-        return ResponseEntity.ok(pessoaService.inserir(pessoa));
+    public ResponseEntity<Pagamento> inserir(@Valid @RequestBody Pagamento pagamento) {
+        return ResponseEntity.ok(pagamentoService.inserir(pagamento));
     }
 
     @PutMapping
-    public ResponseEntity<Pessoa> alterar(@Valid @RequestBody Pessoa pessoa) {
-        return ResponseEntity.ok(pessoaService.alterar(pessoa));
+    public ResponseEntity<Pagamento> alterar(@Valid @RequestBody Pagamento pagamento) {
+        return ResponseEntity.ok(pagamentoService.alterar(pagamento));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> excluir(@PathVariable("id") Long id) {
-        pessoaService.excluir(id);
+        pagamentoService.excluir(id);
         return ResponseEntity.ok("Excluindo");
     }
 }

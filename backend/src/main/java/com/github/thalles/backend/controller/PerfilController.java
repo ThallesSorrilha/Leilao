@@ -30,7 +30,6 @@ public class PerfilController {
         return ResponseEntity.ok(perfilService.buscarTodos(pageable));
     }
 
-    // Método adicional
     @GetMapping("/{id}")
     public ResponseEntity<Perfil> buscarPorId(@PathVariable("id") Long id) {
         return ResponseEntity.ok(perfilService.buscarPorId(id));

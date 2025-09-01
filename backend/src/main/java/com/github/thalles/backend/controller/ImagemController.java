@@ -13,41 +13,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.thalles.backend.model.Pessoa;
-import com.github.thalles.backend.service.PessoaService;
+import com.github.thalles.backend.model.Imagem;
+import com.github.thalles.backend.service.ImagemService;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/pessoa")
-public class PessoaController {
+@RequestMapping("/imagem")
+public class ImagemController {
 
     @Autowired
-    private PessoaService pessoaService;
+    private ImagemService imagemService;
 
     @GetMapping
-    public ResponseEntity<Page<Pessoa>> buscarTodos(Pageable pageable) {
-        return ResponseEntity.ok(pessoaService.buscarTodos(pageable));
+    public ResponseEntity<Page<Imagem>> buscarTodos(Pageable pageable) {
+        return ResponseEntity.ok(imagemService.buscarTodos(pageable));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Pessoa> buscarPorId(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(pessoaService.buscarPorId(id));
+    public ResponseEntity<Imagem> buscarPorId(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(imagemService.buscarPorId(id));
     }
 
     @PostMapping
-    public ResponseEntity<Pessoa> inserir(@Valid @RequestBody Pessoa pessoa) {
-        return ResponseEntity.ok(pessoaService.inserir(pessoa));
+    public ResponseEntity<Imagem> inserir(@Valid @RequestBody Imagem imagem) {
+        return ResponseEntity.ok(imagemService.inserir(imagem));
+
     }
 
     @PutMapping
-    public ResponseEntity<Pessoa> alterar(@Valid @RequestBody Pessoa pessoa) {
-        return ResponseEntity.ok(pessoaService.alterar(pessoa));
+    public ResponseEntity<Imagem> alterar(@Valid @RequestBody Imagem imagem) {
+        return ResponseEntity.ok(imagemService.alterar(imagem));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> excluir(@PathVariable("id") Long id) {
-        pessoaService.excluir(id);
+        imagemService.excluir(id);
         return ResponseEntity.ok("Excluindo");
     }
 }
