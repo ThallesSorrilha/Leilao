@@ -20,8 +20,8 @@ public class PerfilService {
     @Autowired
     private MessageSource messageSource;
 
-    @Autowired
-    private EmailServices emailService;
+    //@Autowired
+    //private EmailServices emailService;
 
     public Perfil inserir(Perfil perfil) {
         Perfil perfilCadastrado = perfilRepository.save(perfil);

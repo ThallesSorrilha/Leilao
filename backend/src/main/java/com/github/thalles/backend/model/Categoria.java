@@ -21,18 +21,17 @@ public class Categoria {
     private Long id;
 
     @NotBlank(message = "{validation.nome.notblank}")
+    @Size(max = 100, message = "{validation.nome.size}")
     private String nome;
 
-    @NotBlank(message = "{validation.observacao.notblank}")
+    @Size(max = 1000, message = "{validation.observacao.size}")
     private String observacao;
 
     @ManyToOne
     @JoinColumn(name = "id_leilao")
-    @Size(max = 100, message = "{validation.leilao.size}")
     private Leilao leilao;
 
     @ManyToOne
     @JoinColumn(name = "id_pessoa")
-    @Size(max = 1000, message = "{validation.leilao.size}")
     private Pessoa pessoa;
 }

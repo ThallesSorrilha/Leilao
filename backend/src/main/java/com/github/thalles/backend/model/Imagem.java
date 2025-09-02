@@ -1,5 +1,7 @@
 package com.github.thalles.backend.model;
 
+import jakarta.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Entity;
@@ -21,8 +23,9 @@ public class Imagem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "{validation.dataHoraCadastro.notblank}")
-    private DateTimeFormat dataHoraCadastro;
+    @NotNull(message = "{validation.dataHoraCadastro.notnull}")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime dataHoraCadastro;
 
     @NotBlank(message = "{validation.nomeImagem.notblank}")
     private String nomeImagem;

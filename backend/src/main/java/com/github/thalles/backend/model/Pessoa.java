@@ -22,6 +22,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -49,15 +50,15 @@ public class Pessoa implements UserDetails {
     @NotBlank(message = "{validation.codigoValidacao.notblank}")
     private String codigoValidacao;
 
-    @NotBlank(message = "{validation.validateCodigoValidacao.notblank}")
+    @NotNull(message = "{validation.validateCodigoValidacao.notnull}")
     private Date validateCodigoValidacao;
 
-    @NotBlank(message = "{validation.ativo.notblank}")
+    @NotNull(message = "{validation.ativo.notnull}")
     private Boolean ativo;
 
     @JsonIgnore
-    @NotBlank(message = "{validation.fotoPerfil.notblank}")
-    private Lob fotoPerfil;
+    @Lob
+    private byte[] fotoPerfil;
 
     @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<PessoaPerfil> pessoaPerfil;

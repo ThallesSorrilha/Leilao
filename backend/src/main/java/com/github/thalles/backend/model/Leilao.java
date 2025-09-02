@@ -1,5 +1,7 @@
 package com.github.thalles.backend.model;
 
+import jakarta.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Entity;
@@ -33,29 +35,29 @@ public class Leilao {
     @Size(max = 1000, message = "{validation.descricao.size}")
     private String descricao;
 
-    @NotBlank(message = "{validation.descricaoDetalhada.notblank}")
     @Size(max = 5000, message = "{validation.descricaoDetalhada.size}")
     private String descricaoDetalhada;
 
-    @NotBlank(message = "{validation.dataHoraInicio.notblank}")
-    private DateTimeFormat dataHoraInicio;
+    @NotNull(message = "{validation.dataHoraInicio.notnull}")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime dataHoraInicio;
 
-    @NotBlank(message = "{validation.dataHoraFim.notblank}")
-    private DateTimeFormat dataHoraFim;
+    @NotNull(message = "{validation.dataHoraFim.notnull}")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime dataHoraFim;
 
     @Enumerated(EnumType.STRING)
-    @NotBlank(message = "{validation.status.notblank}")
+    @NotNull(message = "{validation.status.notnull}")
     private StatusLeilao status;
 
-    @NotBlank(message = "{validation.observacao.notblank}")
     @Size(max = 1000, message = "{validation.observacao.size}")
     private String observacao;
 
-    @NotBlank(message = "{validation.valorIncremento.notblank}")
+    @NotNull(message = "{validation.valorIncremento.notnull}")
     @Positive(message = "{validation.valorIncremento.positive}")
     private Float valorIncremento;
 
-    @NotBlank(message = "{validation.lanceMinimo.notblank}")
+    @NotNull(message = "{validation.lanceMinimo.notnull}")
     @Positive(message = "{validation.lanceMinimo.positive}")
     private Float lanceMinimo;
 

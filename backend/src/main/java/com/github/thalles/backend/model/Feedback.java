@@ -1,5 +1,7 @@
 package com.github.thalles.backend.model;
 
+import jakarta.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Entity;
@@ -26,15 +28,16 @@ public class Feedback {
     @NotBlank(message = "{validation.comentario.notblank}")
     private String comentario;
 
-    @NotBlank(message = "{validation.nota.notblank}")
+    @NotNull(message = "{validation.nota.notnull}")
     @Size(min = 0, max = 10, message = "{validation.nota.size}")
     private Integer nota;
 
-    @NotBlank(message = "{validation.dataHora.notblank}")
-    private DateTimeFormat dataHora;
+    @NotNull(message = "{validation.dataHora.notnull}")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime dataHora;
 
     @ManyToOne
     @JoinColumn(name = "id_pessoa")
-    @NotBlank(message = "{validation.pessoa.notblank}")
+    @NotNull(message = "{validation.pessoa.notnull}")
     private Pessoa pessoa;
 }

@@ -1,5 +1,7 @@
 package com.github.thalles.backend.model;
 
+import jakarta.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Entity;
@@ -22,18 +24,19 @@ public class Pagamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "{validation.valor.notblank}")
+    @NotNull(message = "{validation.valor.notnull}")
     @Positive(message = "{validation.valor.positive}")
     private Float valor;
 
-    @NotBlank(message = "{validation.dataHora.notblank}")
-    private DateTimeFormat dataHora;
+    @NotNull(message = "{validation.dataHora.notnull}")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime dataHora;
 
     @NotBlank(message = "{validation.status.notblank}")
     private String status;
 
     @ManyToOne
     @JoinColumn(name = "id_leilao")
-    @NotBlank(message = "{validation.leilao.notblank}")
+    @NotNull(message = "{validation.leilao.notnull}")
     private Leilao leilao;
 }
