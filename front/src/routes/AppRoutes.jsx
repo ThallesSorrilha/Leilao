@@ -5,6 +5,7 @@ import RecoverPassword from "../pages/RecoverPassword/RecoverPassword";
 import ChangePassword from "../pages/ChangePassword/ChangePassword";
 import InsertCode from "../pages/InsertCode/InsertCode.jsx";
 import Perfil from "../pages/Perfil/Perfil.jsx";
+import CategoriaCRUD from "../pages/Categoria/Categoria.jsx";
 import RotaPrivadaLayout from "../components/layout/RotaPrivadaLayout.jsx";
 import PadraoLayout from "../components/layout/PadraoLayout.jsx";
 
@@ -24,10 +25,6 @@ const AppRoutes = () => {
                 <Perfil />
               </PadraoLayout>
             }
-          />
-          <Route
-            path="/categoria"
-            element={<PadraoLayout>{/*<Categoria />*/}</PadraoLayout>}
           />
           <Route
             path="/feedback"
@@ -55,11 +52,52 @@ const AppRoutes = () => {
           />
         </Route>
 
-        <Route path="/login" element={<PadraoLayout><Login /></PadraoLayout>} />
-        <Route path="/cadastro" element={<PadraoLayout><NewRegistration /></PadraoLayout>} />
-        <Route path="/recuperar-senha" element={<PadraoLayout><RecoverPassword /></PadraoLayout>} />
-        <Route path="/alterar-senha" element={<PadraoLayout><ChangePassword /></PadraoLayout>} />
-        <Route path="/inserir-codigo" element={<PadraoLayout><InsertCode /></PadraoLayout>} />
+        {/**/}
+        <Route
+          path="/categoria"
+          element={<PadraoLayout>{<CategoriaCRUD />}</PadraoLayout>}
+        />
+
+        <Route
+          path="/login"
+          element={
+            <PadraoLayout>
+              <Login />
+            </PadraoLayout>
+          }
+        />
+        <Route
+          path="/cadastro"
+          element={
+            <PadraoLayout>
+              <NewRegistration />
+            </PadraoLayout>
+          }
+        />
+        <Route
+          path="/recuperar-senha"
+          element={
+            <PadraoLayout>
+              <RecoverPassword />
+            </PadraoLayout>
+          }
+        />
+        <Route
+          path="/alterar-senha"
+          element={
+            <PadraoLayout>
+              <ChangePassword />
+            </PadraoLayout>
+          }
+        />
+        <Route
+          path="/inserir-codigo"
+          element={
+            <PadraoLayout>
+              <InsertCode />
+            </PadraoLayout>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
