@@ -4,6 +4,8 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.github.thalles.backend.enums.StatusLeilao;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

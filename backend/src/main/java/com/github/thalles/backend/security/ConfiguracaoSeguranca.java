@@ -47,6 +47,12 @@ public class ConfiguracaoSeguranca {
                 .requestMatchers("/autenticacao/**").permitAll()
                 .requestMatchers("/perfil/**").permitAll()
                 .requestMatchers("/pessoa/**").permitAll()
+                .requestMatchers("/categoria/**").permitAll()
+                .requestMatchers("/feedback/**").permitAll()
+                .requestMatchers("/imagem/**").permitAll()
+                .requestMatchers("/lance/**").permitAll()
+                .requestMatchers("/leilao/**").permitAll()
+                .requestMatchers("/pagamento/**").permitAll()
                 /* .requestMatchers("/api/pessoa/**").hasRole("ADMIN") */
                 .anyRequest().authenticated()
                 )

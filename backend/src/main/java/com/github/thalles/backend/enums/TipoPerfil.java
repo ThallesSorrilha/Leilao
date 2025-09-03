@@ -1,4 +1,4 @@
-package com.github.thalles.backend.model;
+package com.github.thalles.backend.enums;
 
 public enum TipoPerfil {
     ADMIN, COMPRADOR, VENDEDOR

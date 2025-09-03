@@ -1,5 +1,7 @@
 package com.github.thalles.backend.model;
 
+import com.github.thalles.backend.enums.TipoPerfil;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
