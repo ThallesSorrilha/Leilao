@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "../pages/Login/LoginFrank.jsx";
+import Login from "../pages/Login/Login.jsx";
 import NewRegistration from "../pages/NewRegistration/NewRegistration";
 import RecoverPassword from "../pages/RecoverPassword/RecoverPassword";
 import ChangePassword from "../pages/ChangePassword/ChangePassword";
