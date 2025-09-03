@@ -20,6 +20,7 @@ public class AutenticacaoController {
 
     @PostMapping("/login")
     public ResponseEntity<PessoaAutenticacaoDTO> login(@RequestBody PessoaRequisicaoDTO pessoa) {
+        System.out.println(pessoa.getEmail());
         return ResponseEntity.ok(autenticacaoService.autenticar(pessoa));
     }
 }

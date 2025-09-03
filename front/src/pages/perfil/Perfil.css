@@ -1,0 +1,78 @@
+/* Estilos para o container principal da página */
+.page-container {
+    background-color: #f3f4f6;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+/* Estilos para a seção principal da tabela */
+.card-container {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+/* Estilos para o cabeçalho da tabela */
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.table-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2937;
+}
+
+/* Estilos para a barra de entrada do modal de formulário */
+.p-inputgroup {
+    display: flex;
+    align-items: center;
+}
+
+.p-inputgroup-addon {
+    background-color: #e5e7eb;
+    border: 1px solid #d1d5db;
+    border-right: none;
+    padding: 0.5rem 0.75rem;
+    border-top-left-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
+    color: #4b5563;
+}
+
+.p-inputgroup .p-inputtext,
+.p-inputgroup .p-inputtextarea {
+    border: 1px solid #d1d5db;
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+    flex: 1;
+}
+
+/* Estilos para o estado de erro do input */
+.p-invalid {
+    border-color: #ef4444;
+}
+
+/* Estilos para o rodapé do diálogo de formulário */
+.dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 1rem;
+}
+
+/* Estilos para os botões do PrimeReact */
+.p-button {
+    font-weight: 500;
+}
+
+/* Estilos para os botões de ação na tabela */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
