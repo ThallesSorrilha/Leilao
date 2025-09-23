@@ -1,5 +1,7 @@
 package com.github.thalles.backend.security;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,8 +15,6 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import java.io.IOException;
 
 @Component
 public class JwtFiltroAutenticacao extends OncePerRequestFilter {
@@ -49,4 +49,25 @@ public class JwtFiltroAutenticacao extends OncePerRequestFilter {
         }
         chain.doFilter(request, response);
     }
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+        // Lista de caminhos que o filtro deve ignorar (os mesmos de permitAll)
+        String path = request.getServletPath();
+        return path.startsWith("/autenticacao") ||
+               path.startsWith("/perfil") ||
+               path.startsWith("/pessoa") ||
+               path.startsWith("/categoria") ||
+               path.startsWith("/feedback") ||
+               path.startsWith("/imagem") ||
+               path.startsWith("/lance") ||
+               path.startsWith("/leilao") ||
+               path.startsWith("/pagamento") ||
+               path.startsWith("/login") || 
+               path.startsWith("/cadastro") ||
+               path.startsWith("/recuperar-senha") ||
+               path.startsWith("/alterar-senha") ||
+               path.startsWith("/inserir-codigo");
+    }
+
 }

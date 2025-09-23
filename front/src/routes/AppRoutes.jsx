@@ -42,22 +42,19 @@ const AppRoutes = () => {
             path="/pessoa"
             element={<PadraoLayout>{/*<Pessoa />*/}</PadraoLayout>}
           />
+          <Route
+            path="/perfil"
+            element={
+              <PadraoLayout>
+                <Perfil />
+              </PadraoLayout>
+            }
+          />
+          <Route
+            path="/categoria"
+            element={<PadraoLayout>{<CategoriaCRUD />}</PadraoLayout>}
+          />
         </Route>
-
-        {/**/}
-        <Route
-          path="/perfil"
-          element={
-            <PadraoLayout>
-              <Perfil />
-            </PadraoLayout>
-          }
-        />
-        <Route
-          path="/categoria"
-          element={<PadraoLayout>{<CategoriaCRUD />}</PadraoLayout>}
-        />
-
         <Route
           path="/login"
           element={
